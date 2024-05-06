@@ -31,7 +31,7 @@ INSERT INTO Propriétaire VALUES('Maxime63');
 INSERT INTO Propriétaire VALUES('Sophie92');
 INSERT INTO Propriétaire VALUES('ThomasParis');
 INSERT INTO Propriétaire VALUES('Vanessa78');
--- INSERT INTO Propriétaire VALUES('Taupe'); KO parce que il n'y a pas de client Taupe
+
 
 /*----------------------------------------Locataire----------------------------------------*/
 
@@ -46,9 +46,6 @@ INSERT INTO Locataire VALUES('Maxime63', '234VWX', '2024-05-28');
 INSERT INTO Locataire VALUES('Sophie92', '567YZA', '2023-07-14');
 INSERT INTO Locataire VALUES('ThomasParis', '890BCD', '2025-02-01');
 INSERT INTO Locataire VALUES('Vanessa78', '123EFG', '2024-04-17');
-/*INSERT INTO Locataire VALUES('Charlie33', '012JKL', '2032-03-18','18598-01-02');
-INSERT INTO Locataire VALUES('Eva75020', '345MNO', '2028-08-05', '2034-06-19');
-INSERT INTO Locataire VALUES('Gaston', '678PQR', '2100-11-30', '2200-11-30');*/
 
 /*----------------------------------------Entreprise----------------------------------------*/
 
@@ -141,7 +138,6 @@ INSERT INTO ResponsableQualité VALUES (24, 'Mauvais');
 
 /*----------------------------------------Véhicule----------------------------------------*/
 
--- INSERT INTO Véhicule VALUES('N1-QU3-NFI8', 'Citadine', 'Rolls Royce', 'Phantom', 'Noir', 'Full Options', 'Diesel', '2180-04-28', 200000000, 'Yes bébé alors ça marche ? Je suis avec mon gars Patrick sapé avec un régular camouflage urbain  EXTRAAAAAAAAAA LARGEEEEEEEEE, matte la paire de godasses, c''est même plus des godasses c''est des grolles bien serrées, le raclo est stressé', 23498654, 1, 'Bidule');
 INSERT INTO Véhicule VALUES ('AB123CD', 'Compacte', 'Renault', 'Clio', 'Rouge', 'Climatisation, Vitres électriques', 'Essence', '2020-05-15', 15000, 'Bonne condition générale', 0001, 1, 'Alice92');
 INSERT INTO Véhicule VALUES ('EF777GH', 'Berline', 'Peugeot', '508', 'Bleu', 'Sièges chauffants, Caméra de recul', 'Diesel', '2019-11-15', 18000, 'Bien entretenu, faible consommation', 0016, 16, 'Alice92');
 INSERT INTO Véhicule VALUES ('IJ888KL', 'Berline', 'Citroën', 'C5 Aircross', 'Blanc', 'GPS, Bluetooth, Sièges en cuir', 'Diesel', '2019-09-30', 20000, 'Confortable et spacieux', 0020, 20, 'Alice92');
@@ -195,7 +191,6 @@ INSERT INTO LocationPL VALUES ('Vanessa78', 'Alice92');
 
 /*----------------------------------------LocationLV----------------------------------------*/
 
--- INSERT INTO LocationLV VALUES ('N1QU3NFI8', 'Bidule'); Problème c'est que Bidule et Truc louent le mêle véhicule, il n'y a pas de notion de temps
 INSERT INTO LocationLV VALUES ('AB123CD', 'Bob75');
 INSERT INTO LocationLV VALUES ('EF777GH', 'Lola87');
 INSERT INTO LocationLV VALUES ('IJ888KL', 'Eva75020');
@@ -222,7 +217,6 @@ INSERT INTO LocationLV VALUES ('KL890MN', 'Alice92');
 
 /*----------------------------------------LocationEV----------------------------------------*/
 
--- INSERT INTO LocationEV VALUES ('N1-QU3-NFI8', 'Truc'); --Problème c'est que Bidule et Truc louent le mêle véhicule, il n'y a pas de notion de temps
 INSERT INTO LocationEV VALUES ('AB123CD', 'AlphaCars');
 INSERT INTO LocationEV VALUES ('EF456GH', 'BetaRent');
 INSERT INTO LocationEV VALUES ('IJ789KL', 'GammaAuto');
@@ -343,11 +337,9 @@ INSERT INTO Avis VALUES ('YZ901AB', 17, 3, 'Le véhicule était globalement corr
 INSERT INTO Avis VALUES ('CD234EF', 19, 5, NULL);
 INSERT INTO Avis VALUES ('GH567IJ', 20, 2, 'Le principal inconvénient de cette location était le retard lors de la prise en charge du véhicule. Cela a entraîné quelques inconvénients dans mon programme de voyage.');
 INSERT INTO Avis VALUES ('KL890MN', 23, 4, NULL);
---INSERT INTO Avis VALUES ('N1-QU3-NFI8', 210, 0, 'Le véhicule est vraiment mauvais ! Comment osez-vous laisser rouler cette !@/$#!! sur la route ????? C''EST INDAMISSBIBLE !!!!!!!!!!!!! RENDEZ L''ARGENT VOUS ALLEZ ENTENDRE PARLER DE MOI SOYEZ-EN CERTAIN ! SI JE POUVAIS J''AURAIS MIS UNE NOTE NÉGATIVE TIENS !');
 
 /*----------------------------------------CheckIn----------------------------------------*/
 
--- Pas de tests de cohérences entre checkin et checkout
 INSERT INTO CheckIn VALUES (01, 0, 65000, 60, 'Bon', NULL);
 INSERT INTO CheckIn VALUES (02, 1, 70000, 65, 'Bon', NULL);
 INSERT INTO CheckIn VALUES (03, 0, 75000, 60, 'Excellent', NULL);
@@ -374,7 +366,6 @@ INSERT INTO CheckIn VALUES (23, 0, 175000, 26, 'Excellent', NULL);
 
 /*----------------------------------------CheckOut----------------------------------------*/
 
--- Pas de tests entre les checkout et checkin
 INSERT INTO CheckOut VALUES (01, 0, 65123, 58, 'Bon');
 INSERT INTO CheckOut VALUES (02, 1, 72340, 42, 'Bon');
 INSERT INTO CheckOut VALUES (03, 2, 75658, 23, 'Bon');
