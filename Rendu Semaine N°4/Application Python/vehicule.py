@@ -2,19 +2,19 @@ import psycopg2
 from datetime import datetime
 
 def insert_vehicule(cur, conn):
-    immatriculation = input("Entrer l'immatriculation du véhicule : "\n)
-    categorie = input("Entrer la catégorie du véhicule : "\n)
-    marque = input("Entrer la marque du véhicule : "\n)
-    modele = input("Entrer le modèle du véhicule : "\n)
-    couleur = input("Entrer la couleur du véhicule : "\n)
-    options = input("Entrer les options du véhicule : "\n)
-    carburant = input("Entrer le type de carburant du véhicule : "\n)
-    annee_mise_circulation = input("Entrer l'année de mise en circulation du véhicule (format AAAA-MM-JJ) : "\n)
-    kilometrage = float(input("Entrer le kilométrage du véhicule : "\n))
-    description = input("Entrer la description du véhicule : "\n)
-    contrat_a = int(input("Entrer le numéro du contrat d'assurance : "\n))
-    responsable = int(input("Entrer l'ID du responsable qualité : "\n))
-    proprietaire = input("Entrer le pseudo du propriétaire : "\n)
+    immatriculation = input("\nEntrer l'immatriculation du véhicule : ")
+    categorie = input("\nEntrer la catégorie du véhicule : ")
+    marque = input("\nEntrer la marque du véhicule : ")
+    modele = input("\nEntrer le modèle du véhicule : ")
+    couleur = input("\nEntrer la couleur du véhicule : ")
+    options = input("\nEntrer les options du véhicule : ")
+    carburant = input("\nEntrer le type de carburant du véhicule : ")
+    annee_mise_circulation = input("\nEntrer l'année de mise en circulation du véhicule (format AAAA-MM-JJ) : ")
+    kilometrage = float(input("\nEntrer le kilométrage du véhicule : "))
+    description = input("\nEntrer la description du véhicule : ")
+    contrat_a = int(input("\nEntrer le numéro du contrat d'assurance : "))
+    responsable = int(input("\nEntrer l'ID du responsable qualité : "))
+    proprietaire = input("\nEntrer le pseudo du propriétaire : ")
 
     annee_mise_circulation = datetime.strptime(annee_mise_circulation, '%Y-%m-%d').date()
 
@@ -22,17 +22,17 @@ def insert_vehicule(cur, conn):
 
     cur.execute(query)
     conn.commit()
-    print("Le véhicule a été inséré avec succès.\n")
+    print("\nLe véhicule a été inséré avec succès.")
 
 def update_vehicule(cur, conn):
-    immatriculation = input("Entrer le numéro d'immatriculation dont les informations doivent être mises à jour : "\n)
-    new_couleur = input("Entrer la nouvelle couleur du véhicule : "\n)
-    new_options = input("Entrer les nouvelles options du véhicule : "\n)
-    new_carburant = input("Entrer le nouveau type de carburant du véhicule : "\n)
-    new_kilometrage = int(input("Entrer le nouveau kilométrage du véhicule : "\n))
-    new_description = input("Entrer la nouvelle description du véhicule : "\n)
-    new_contrat_a = int(input("Entrer le nouveau numéro du contrat d'assurance : "\n))
-    new_proprietaire = input("Entrer le nouveau pseudo du propriétaire : "\n)
+    immatriculation = input("\nEntrer le numéro d'immatriculation dont les informations doivent être mises à jour : ")
+    new_couleur = input("\nEntrer la nouvelle couleur du véhicule : ")
+    new_options = input("\nEntrer les nouvelles options du véhicule : ")
+    new_carburant = input("\nEntrer le nouveau type de carburant du véhicule : ")
+    new_kilometrage = int(input("\nEntrer le nouveau kilométrage du véhicule : "))
+    new_description = input("\nEntrer la nouvelle description du véhicule : ")
+    new_contrat_a = int(input("\nEntrer le nouveau numéro du contrat d'assurance : "))
+    new_proprietaire = input("\nEntrer le nouveau pseudo du propriétaire : ")
 
     query = f"""
     UPDATE Véhicule
@@ -48,13 +48,13 @@ def update_vehicule(cur, conn):
 
     cur.execute(query)
     conn.commit()
-    print("Le véhicule a été mis à jour avec succès."\n)
+    print("\nLe véhicule a été mis à jour avec succès.")
 
 def delete_vehicule(cur, conn):
-    immatriculation = input("Entrer l'immatriculation du véhicule à supprimer : "\n)
+    immatriculation = input("\nEntrer l'immatriculation du véhicule à supprimer : ")
 
     query = f"DELETE FROM Véhicule WHERE N°Immat = '{immatriculation}'"
 
     cur.execute(query)
     conn.commit()
-    print("Le véhicule a été supprimé avec succès."\n)
+    print("\nLe véhicule a été supprimé avec succès.")
