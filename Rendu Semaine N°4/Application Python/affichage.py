@@ -1,8 +1,8 @@
 from connexion import *
 
 def interfaceLoginMenu():
-    print("Bienvenue \n")
-    print("Etes vous un utilisateur ou un administrateur ? \n")
+    print("\nBienvenue ")
+    print("\nEtes vous un utilisateur ou un administrateur ? ")
 #loginMenu()
 
 def interfacecAdminMenu():
@@ -26,7 +26,7 @@ def interfacecAdminMenu():
     print("\n4.2 Modifier un locataire")
     print("\n4.3 Supprimer un locataire")
     print("\n____________________________________________________________________________")
-    
+
     print("\n5.1 Insérer une entreprise")
     print("\n5.2 Modifier une entreprise")
     print("\n5.3 Supprimer une entreprise")
@@ -36,7 +36,7 @@ def interfacecAdminMenu():
     print("\n6.2 Modifier un numéro de contrat d'assurance")
     print("\n6.3 Supprimer un numéro de contrat d'assurance")
     print("\n____________________________________________________________________________")
-    
+
     print("\n7.1 Insérer un responsable qualité")
     print("\n7.2 Modifier un responsable qualité")
     print("\n7.3 Supprimer un responsable qualité")
@@ -101,7 +101,7 @@ def interfacecAdminMenu():
     print("\n19.2 Modifier une facture")
     print("\n19.3 Supprimer une facture")
     print("\n____________________________________________________________________________")
-    
+
     print("\n20.1 Insérer une franchise")
     print("\n20.2 Modifier une franchise")
     print("\n20.3 Supprimer une franchise")
@@ -125,7 +125,7 @@ def interfaceUserMenu():
 
 
 def displaySelect(query):
-    conn = connect_db()
+    conn = connexion_bdd()
     cur = conn.cursor()
     cur.execute(query)
     rows = cur.fetchall()

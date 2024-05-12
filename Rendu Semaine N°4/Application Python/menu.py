@@ -1,32 +1,32 @@
 import psycopg2
 from affichage import *
 from connexion import *
-from client import *
-from proprietaire import *
-from locataire import *
-from entreprise import *
-from contratAssurance import *
-from responsableQualite import *
-from vehicule import * 
+#from client import *
+#from proprietaire import *
+#from locataire import *
+#from entreprise import *
+#from contratAssurance import *
+#from responsableQualite import *
+from vehicule import *
 from proprieteLoc import *
-from signalement import *
-from signaler import *
-from checkIn import *
-from checkOut import *
-from locationPL import *
-from locationLV import *
-from locationEV import *
-from contratLocation import *
-from avis import *
-from facture import *
-from franchise import *
-from emetLS import *
+#from signalement import *
+#from signaler import *
+#from checkIn import *
+#from checkOut import *
+#from locationPL import *
+#from locationLV import *
+#from locationEV import *
+#from contratLocation import *
+#from avis import *
+#from facture import *
+#from franchise import *
+#from emetLS import *
 # Modifiez les fichiers en conséquence si ils ne correspondent pas
 
 
-# Fonction exécutant nos requêtes  
+# Fonction exécutant nos requêtes
 def exe_query(query):
-    conn = connect_db()
+    conn = connexion_bdd()
     cur = conn.cursor()
     cur.execute(query)
     conn.commit()
@@ -34,39 +34,17 @@ def exe_query(query):
 
 # Fonction permettant d'afficher les résultats des requêtes
 def query(query):
-    conn = connect_db()
+    conn = connexion_bdd()
     cur = conn.cursor()
     cur.execute(query)
     conn.commit()
     rows = cur.fetchall()
     print(rows)
     conn.close()
-        
-
-while True:
-    interfaceLoginMenu()
-    print("\nRentrez 'Utilisateur' ou 'Administrateur', sinon 'Q' pour quitter le programme.")
-    choix = input("\n\nVotre choix: ")
-    if choix == 'Utilisateur':
-        # password = input("\n Mot de passe :")
-        # if password == #Dépend de la méthode d'implémentation des mots de passe. Faire une requête sur la table en question et vérifier que le mdp entré est vérifié
-        userMenu()
-    elif choix == 'Administrateur':
-        password = input("\n Mot de passe : ")
-        if password == 'mdp1234':
-            adminMenu()
-        else:
-            print("\nMot de passe erroné")
-    elif choix == 'Q':
-        print("\nVous avez choisi de quitter l'interface de connexion")
-        break
-    else:
-        print("\nChoix invalide")
-
 
 def adminMenu():
     while True:
-        conn = connect_db()
+        conn = connexion_bdd()
         cur = conn.cursor()
         interfacecAdminMenu()
         choix = input("\n Choisissez une option : ")
@@ -222,7 +200,7 @@ def userMenu():
         interfaceUserMenu()
         choix = input("\nChoisissez votre option : ")
 
-        if choix == 1: #Requêtes du fichier SELECT.SQL : 1, 2, 3, 21, 23, 24, 25, 26
+        if choix == '1': #Requêtes du fichier SELECT.SQL : 1, 2, 3, 21, 23, 24, 25, 26
 
             print("\nMoyenne d’âge des véhicules | Average vehicle age :")
             query = "SELECT AVG(EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM AnnéeMiseCirculation)) AS Moyenne_Age_Vehicules FROM Véhicule;"
@@ -261,13 +239,13 @@ def userMenu():
             displaySelect(query)
 
 
-        elif choix == 2: #Requêtes du fichier SELECT.SQL : 4, 5, 6, 6bis, 10, 11, 15, 17
-            
+        elif choix == '2': #Requêtes du fichier SELECT.SQL : 4, 5, 6, 6bis, 10, 11, 15, 17
+
             print("\nFacture moyenne pour une location | Average invoice for a rental")
             query = "SELECT AVG(Montant) AS Facture_Moyenne FROM Facture;"
             displaySelect(query)
 
-            montant = int(input("Entrez un montant :"))
+            montant = int(input("Entrez un montant : "))
             print("\nFactures ayant un montant supérieur à %s euros | Invoices with an amount greater than %s euros" % (montant, montant))
             query = "SELECT contratLocation, Montant FROM Facture WHERE Montant > %s;" %montant
             displaySelect(query)
@@ -277,7 +255,7 @@ def userMenu():
             displaySelect(query)
 
             print("\nNombre de pays autorisé pour un véhicule donné | Maximum number of countries allowed for a vehicle")
-            immat = input("Entrez l'immatriculation du véhicule")
+            immat = input("Entrez l'immatriculation du véhicule : ")
             query = "SELECT véhicule, COUNT(DISTINCT country) AS Nombre_Pays FROM PropriétéLoc, unnest(ListePays) AS country WHERE véhicule = '%s' GROUP BY véhicule;" %immat
             displaySelect(query)
 
@@ -294,12 +272,13 @@ def userMenu():
             displaySelect(query)
 
             print("\nParts des véhicules assurés sur un type de franchise | Shares of vehicles insured by deductible type")
-            franchise = input("Selectionnez une des options suivantes en respectant la syntaxe ! Choix : 'Zéro franchise', 'Sans réduction', 'Franchise réduite'") 
+            print("Selectionnez une des options suivantes en respectant la syntaxe ! Choix : 'Zéro franchise', 'Sans réduction', 'Franchise réduite'")
+            franchise = input("Votre choix : ")
             query = "SELECT (COUNT(*) FILTER (WHERE ChoixFranchise = '%s')::FLOAT / COUNT(*)) * 100 AS Pourcentage_Zero_Franchise FROM Franchise;" %franchise
             displaySelect(query)
 
 
-        elif choix == 3: #Requêtes du fichier SELECT.SQL : 7, 8, 9, 12, 13, 18, 22, 28, 32
+        elif choix == '3': #Requêtes du fichier SELECT.SQL : 7, 8, 9, 12, 13, 18, 22, 28, 32
 
             print("\nVéhicules ayant les meilleurs avis | Vehicles with the best reviews")
             query = "SELECT véhicule, AVG(Note) AS Note_Moyenne FROM Avis GROUP BY véhicule ORDER BY Note_Moyenne DESC;"
@@ -348,7 +327,7 @@ def userMenu():
 
             nom = input("\nEntrez la marque d'un véhicule : ")
             print("\nLocataires ayant loué le véhicule '%s' | Tenants who rented vehicle '%s'" %(nom,nom))
-            query = "SELECT l.* FROM Locataire l JOIN PropriétéLoc pl ON l.Pseudo = pl.propriétaire JOIN Véhicule v ON pl.véhicule = v.N°Immat WHERE v.Marque = 's';" %nom
+            query = "SELECT l.* FROM Locataire l JOIN PropriétéLoc pl ON l.Pseudo = pl.propriétaire JOIN Véhicule v ON pl.véhicule = v.N°Immat WHERE v.Marque = '%s';" %nom
             displaySelect(query)
 
         elif choix == 'Q' or 'q':
@@ -357,3 +336,23 @@ def userMenu():
 
         else:
             print("\nOption invalide")
+
+while True:
+    interfaceLoginMenu()
+    print("\nRentrez 'Utilisateur' ou 'Administrateur', sinon 'Q' pour quitter le programme.")
+    choix = input("\n\nVotre choix: ")
+    if choix == 'Utilisateur':
+        # password = input("\n Mot de passe :")
+        # if password == #Dépend de la méthode d'implémentation des mots de passe. Faire une requête sur la table en question et vérifier que le mdp entré est vérifié
+        userMenu()
+    elif choix == 'Administrateur':
+        password = input("\n Mot de passe : ")
+        if password == 'mdp1234':
+            adminMenu()
+        else:
+            print("\nMot de passe erroné")
+    elif choix == 'Q':
+        print("\nVous avez choisi de quitter l'interface de connexion\n")
+        break
+    else:
+        print("\n******** Choix invalide ********\n")
