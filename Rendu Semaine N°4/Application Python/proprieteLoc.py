@@ -2,14 +2,14 @@ import psycopg2
 from datetime import datetime
 
 def insert_proprieteLoc(cur, conn):
-    proprietaire = input("Entrer le propriétaire du véhicule : "\n)
-    véhicule = input("Entrer le numéro d'immatriculation : "\n)
-    dateDebutLoc = input("Entrer la date de début de location (format : AAAA-MM-JJ) : "\n)
-    dateFinLoc = input("Entrer la date de fin de location (format : AAAA-MM-JJ) : "\n)
-    seuilKm = int(input("Entrer le seuil de kilométrage à ne pas dépasser : "\n))
-    seuilCarbu = int(input("Entrer le seuil de carburant minimum requis au retour du véhicule : "\n))
-    print("Entrer la liste de pays autorisés parmis les pays suivants : 'France', 'Allemagne', 'Belgique', 'Luxembourg', 'Suisse', 'Italie', 'Espagne', 'Portugal', 'Royaume-Uni', 'Autriche', 'Suède', 'Danemark', 'Irelande'"\n)
-    ListePays = input("Votre choix : "\n).split(',')
+    proprietaire = input("\nEntrer le propriétaire du véhicule : ")
+    véhicule = input("\nEntrer le numéro d'immatriculation : ")
+    dateDebutLoc = input("\nEntrer la date de début de location (format : AAAA-MM-JJ) : ")
+    dateFinLoc = input("\nEntrer la date de fin de location (format : AAAA-MM-JJ) : ")
+    seuilKm = int(input("\nEntrer le seuil de kilométrage à ne pas dépasser : "))
+    seuilCarbu = int(input("\nEntrer le seuil de carburant minimum requis au retour du véhicule : "))
+    print("\nEntrer la liste de pays autorisés parmis les pays suivants : 'France', 'Allemagne', 'Belgique', 'Luxembourg', 'Suisse', 'Italie', 'Espagne', 'Portugal', 'Royaume-Uni', 'Autriche', 'Suède', 'Danemark', 'Irelande'")
+    ListePays = input("\nVotre choix (entrez les pays à la suite, séparés par une virgule et sans espace !) : ").split(',')
 
     dateDebutLoc = datetime.strptime(dateDebutLoc, '%Y-%m-%d').date()
     dateFinLoc = datetime.strptime(dateFinLoc, '%Y-%m-%d').date()
@@ -18,18 +18,18 @@ def insert_proprieteLoc(cur, conn):
 
     cur.execute(query)
     conn.commit()
-    print("Les propriétés ont été enregistrées avec succès.\n")
+    print("Les propriétés ont été enregistrées avec succès.")
     
 
 def update_proprieteLoc(cur, conn):
-    proprietaire = input("Entrer le propriétaire du véhicule : "\n)
-    vehicule = input("Entrer le numéro d'immatriculation : "\n)
-    dateDebutLoc = input("Entrer la nouvelle date de début de location (format : AAAA-MM-JJ) : "\n)
-    dateFinLoc = input("Entrer la nouvelle date de fin de location (format : AAAA-MM-JJ) : "\n)
-    seuilKm = int(input("Entrer le nouveau seuil de kilométrage à ne pas dépasser : "\n))
-    seuilCarbu = int(input("Entrer le nouveau seuil de carburant minimum requis au retour du véhicule : "\n))
-    print("Entrer la nouvelle liste de pays autorisés parmis les pays suivants : 'France', 'Allemagne', 'Belgique', 'Luxembourg', 'Suisse', 'Italie', 'Espagne', 'Portugal', 'Royaume-Uni', 'Autriche', 'Suède', 'Danemark', 'Irelande'"\n)
-    ListePays = input("Votre choix (entrez les pays à la suite, séparés par une virgule et sans espace !) :  "\n).split(',')
+    proprietaire = input("\nEntrer le propriétaire du véhicule : ")
+    vehicule = input("\nEntrer le numéro d'immatriculation : ")
+    dateDebutLoc = input("\nEntrer la nouvelle date de début de location (format : AAAA-MM-JJ) : ")
+    dateFinLoc = input("\nEntrer la nouvelle date de fin de location (format : AAAA-MM-JJ) : ")
+    seuilKm = int(input("\nEntrer le nouveau seuil de kilométrage à ne pas dépasser : "))
+    seuilCarbu = int(input("\nEntrer le nouveau seuil de carburant minimum requis au retour du véhicule : "))
+    print("\nEntrer la nouvelle liste de pays autorisés parmis les pays suivants : 'France', 'Allemagne', 'Belgique', 'Luxembourg', 'Suisse', 'Italie', 'Espagne', 'Portugal', 'Royaume-Uni', 'Autriche', 'Suède', 'Danemark', 'Irelande'")
+    ListePays = input("\nVotre choix (entrez les pays à la suite, séparés par une virgule et sans espace !) : ").split(',')
 
     dateDebutLoc = datetime.strptime(dateDebutLoc, '%Y-%m-%d').date()
     dateFinLoc = datetime.strptime(dateFinLoc, '%Y-%m-%d').date()
@@ -46,14 +46,14 @@ def update_proprieteLoc(cur, conn):
 
     cur.execute(query)
     conn.commit()
-    print("Les propriétés ont été mises à jour avec succès.\n")
+    print("\nLes propriétés ont été mises à jour avec succès.")
 
 def delete_proprieteLoc(cur, conn):
-    proprietaire = input("Entrer le propriétaire du véhicule à supprimer : "\n)
-    vehicule = input("Entrer le numéro d'immatriculation à supprimer : "\n)
+    proprietaire = input("\nEntrer le propriétaire du véhicule à supprimer : ")
+    vehicule = input("\nEntrer le numéro d'immatriculation à supprimer : ")
 
     query = f"DELETE FROM PropriétéLoc WHERE propriétaire = '{proprietaire}' AND véhicule = '{vehicule}'"
 
     cur.execute(query)
     conn.commit()
-    print("Les propriétés ont été supprimées avec succès.\n")
+    print("\nLes propriétés ont été supprimées avec succès.")
