@@ -10,6 +10,7 @@ def insert_emetLS(cur, conn):
 
 def update_emetLS(cur, conn):
     signalement = input("\nInsérer le numéro d'immatriculation à mettre à jour :")
+    new_locataire = input("\nInsérer le pseudo du locataire à mettre à jour : ")
     querylocataire = f"UPDATE ÉmetLS SET locataire = '{new_locataire}' WHERE signalement = '{signalement}'"
     cur.execute(querylocataire)
     conn.commit()

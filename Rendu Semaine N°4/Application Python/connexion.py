@@ -1,6 +1,6 @@
 import psycopg2
 
-def connexion_bdd():
+def connect_db():
     conn = psycopg2.connect(
         database = "dbnf18p121",
         user = "nf18p121",

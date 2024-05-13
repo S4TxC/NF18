@@ -73,18 +73,15 @@ def interfacecAdminMenu():
     print("\n____________________________________________________________________________")
 
     print("\n14.1 Insérer les données de location entre un locataire et un propriétaire")
-    print("\n14.2 Modifier les données de location entre un locataire et un propriétaire")
-    print("\n14.3 Supprimer les données de location entre un locataire et un propriétaire")
+    print("\n14.2 Supprimer les données de location entre un locataire et un propriétaire")
     print("\n____________________________________________________________________________")
 
     print("\n15.1 Insérer les données de location entre un locataire et un véhicule")
-    print("\n15.2 Modifier les données de location entre un locataire et un véhicule")
-    print("\n15.3 Supprimer les données de location entre un locataire et un véhicule")
+    print("\n15.2 Supprimer les données de location entre un locataire et un véhicule")
     print("\n____________________________________________________________________________")
 
     print("\n16.1 Insérer les données de location entre une entreprise et un véhicule")
-    print("\n16.2 Modifier les données de location entre une entreprise et un véhicule")
-    print("\n16.3 Supprimer les données de location entre une entreprise et un véhicule")
+    print("\n16.2 Supprimer les données de location entre une entreprise et un véhicule")
     print("\n____________________________________________________________________________")
 
     print("\n17.1 Insérer un contrat de location")
@@ -111,21 +108,21 @@ def interfacecAdminMenu():
 #adminMenu()
 
 
-def interfaceUserMenu():
+def interfaceUserMenu(estProprietaire):
     print("\n\n ******************************** MENU ******************************** \n")
     print("Choisissez une option: \n")
 
-    print("\n1. Résultats sur les spécificités des véhicules en location")
-    print("\n2. Résultats sur les spécificités des contrats de location")
-    print("\n3. Données générales sur les différentes locations")
-    #print("\n4. ")
+    print("\n1. Résultats sur les spécificités des véhicules en location.")
+    print("\n2. Résultats sur les spécificités des contrats de location.")
+    print("\n3. Données générales sur les différentes locations.")
+    if estProprietaire : print("\n4. Ajouter un vehicule.")
     #print("\n5. ")
     print("\nQ. Quitter")
 #userMenu()
 
 
 def displaySelect(query):
-    conn = connexion_bdd()
+    conn = connect_db()
     cur = conn.cursor()
     cur.execute(query)
     rows = cur.fetchall()
