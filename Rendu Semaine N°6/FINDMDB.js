@@ -17,9 +17,15 @@ let pipeline1 = [
     }
 ];
 
+/*
 let result1 = db.Véhicule.aggregate(pipeline1);
-print("Moyenne d’âge des véhicules:");
+print("Moyenne d’âge des véhicules : \n");
 result1.forEach(doc => printjson(doc));
+*/
+
+let result1 = db.Véhicule.aggregate(pipeline1);
+print("Moyenne d’âge des véhicules : \n");
+result1.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 2) Kilométrage moyen des véhicules | Average mileage of vehicles --------------------------*/
 
@@ -32,9 +38,15 @@ let pipeline2 = [
     }
 ];
 
+/*
 let result2 = db.Véhicule.aggregate(pipeline2);
-print("Kilométrage moyen des véhicules:");
+print("Kilométrage moyen des véhicules : \n");
 result2.forEach(doc => printjson(doc));
+*/
+
+let result2 = db.Véhicule.aggregate(pipeline2);
+print("Kilométrage moyen des véhicules : \n");
+result2.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 3) Nombre de pays maximum autorisé par un propriétaire | Maximum number of countries allowed by an owner --------------------------*/
 
@@ -60,9 +72,15 @@ let pipeline3 = [
     }
 ];
 
+/*
 let result3 = db.PropriétéLoc.aggregate(pipeline3);
-print("Nombres de pays maximum autorisé par un propriétaire:");
+print("Nombres de pays maximum autorisé par un propriétaire : \n");
 result3.forEach(doc => printjson(doc));
+*/
+
+let result3 = db.PropriétéLoc.aggregate(pipeline3);
+print("Nombres de pays maximum autorisé par un propriétaire : \n");
+result3.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 4) Moyenne des avis des véhicules loués | Average ratings of rented vehicles --------------------------*/
 
@@ -75,9 +93,15 @@ let pipeline4 = [
     }
 ];
 
+/*
 let result4 = db.Avis.aggregate(pipeline4);
-print("Moyenne des avis des véhicules loués:");
+print("Moyenne des avis des véhicules loués : \n");
 result4.forEach(doc => printjson(doc));
+*/
+
+let result4 = db.Avis.aggregate(pipeline4);
+print("Moyenne des avis des véhicules loués : \n");
+result4.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 5) Les plus gros locataires | Biggest renters --------------------------*/
 
@@ -95,9 +119,15 @@ let pipeline5 = [
     }
 ];
 
+/*
 let result5 = db.LocationLV.aggregate(pipeline5);
-print("Les plus gros locataires:");
+print("Les plus gros locataires : \n");
 result5.forEach(doc => printjson(doc));
+*/
+
+let result5 = db.LocationLV.aggregate(pipeline5);
+print("Les plus gros locataires : \n");
+result5.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 6) Les plus gros propriétaires | Biggest owners --------------------------*/
 
@@ -115,10 +145,15 @@ let pipeline6 = [
     }
 ];
 
+/*
+let result6 = db.PropriétéLoc.aggregate(pipeline6);
+print("Les plus gros propriétaires : \n");
+result6.forEach(doc => printjson(doc));
+*/
 
 let result6 = db.PropriétéLoc.aggregate(pipeline6);
-print("Les plus gros propriétaires:");
-result6.forEach(doc => printjson(doc));
+print("Les plus gros propriétaires : \n");
+result6.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 7) État des véhicules (via analyse du responsable qualité) | Condition of vehicles (through quality manager analysis) --------------------------*/
 
@@ -165,9 +200,15 @@ let pipeline7 = [
     }
 ];
 
+/*
 let result7 = db.Véhicule.aggregate(pipeline7);
-print("État des véhicules (via analyse du responsable qualité):");
+print("État des véhicules (via analyse du responsable qualité) : \n");
 result7.forEach(doc => printjson(doc));
+*/
+
+let result7 = db.Véhicule.aggregate(pipeline7);
+print("État des véhicules (via analyse du responsable qualité) : \n");
+result7.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 8) Marque de véhicule les plus courant | Most common vehicle brands --------------------------*/
 
@@ -185,9 +226,16 @@ let pipeline8 = [
     }
 ];
 
+/*
 let result8 = db.Véhicule.aggregate(pipeline8);
-print("Marque de véhicule les plus courant:");
+print("Marque de véhicule les plus courant : \n");
 result8.forEach(doc => printjson(doc));
+*/
+
+let result8 = db.Véhicule.aggregate(pipeline8);
+print("Marque de véhicule les plus courant : \n");
+result8.forEach(doc => {printjson(doc); print();});
+
 
 /*-------------------------- 9) Âge permis moyen des locataires | Average age of renters' licenses --------------------------*/
 
@@ -205,9 +253,15 @@ let pipeline9 = [
     }
 ];
 
+/*
 let result9 = db.Locataire.aggregate(pipeline9);
-print("Âge permis moyen des locataires:");
+print("Âge permis moyen des locataires : \n");
 result9.forEach(doc => printjson(doc));
+*/
+
+let result9 = db.Locataire.aggregate(pipeline9);
+print("Âge permis moyen des locataires : \n");
+result9.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 10) SeuilKm moyen autorisé par véhicule | Average mileage threshold allowed per vehicle --------------------------*/
 
@@ -220,9 +274,15 @@ let pipeline10 = [
     }
 ];
 
+/*
 let result10 = db.PropriétéLoc.aggregate(pipeline10);
-print("SeuilKm moyen autorisé par véhicule:");
+print("SeuilKm moyen autorisé par véhicule : \n");
 result10.forEach(doc => printjson(doc));
+*/
+
+let result10 = db.PropriétéLoc.aggregate(pipeline10);
+print("SeuilKm moyen autorisé par véhicule : \n");
+result10.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 11) Couleur la plus répandue pour l’ensemble des véhicule | Most common color for all vehicles --------------------------*/
 
@@ -243,9 +303,15 @@ let pipeline11 = [
     }
 ];
 
+/*
 let result11 = db.Véhicule.aggregate(pipeline11);
-print("Couleur la plus répandue pour l’ensemble des véhicules:");
+print("Couleur la plus répandue pour l’ensemble des véhicules : \n");
 result11.forEach(doc => printjson(doc));
+*/
+
+let result11 = db.Véhicule.aggregate(pipeline11);
+print("Couleur la plus répandue pour l’ensemble des véhicules : \n");
+result11.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 12) Pour afficher le nombre de voitures par couleurs | To display the number of cars by color --------------------------*/
 
@@ -263,9 +329,15 @@ let pipeline12 = [
     }
 ];
 
+/*
 let result12 = db.Véhicule.aggregate(pipeline12);
-print("Nombre de voitures par couleurs:");
+print("Nombre de voitures par couleurs : \n");
 result12.forEach(doc => printjson(doc));
+*/
+
+let result12 = db.Véhicule.aggregate(pipeline12);
+print("Nombre de voitures par couleurs : \n");
+result12.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 13) Véhicule le plus loué | Most rented vehicle --------------------------*/
 
@@ -286,9 +358,15 @@ let pipeline13 = [
     }
 ];
 
+/*
 let result13 = db.LocationLV.aggregate(pipeline13);
-print("Véhicule le plus loué:");
+print("Véhicule le plus loué : \n");
 result13.forEach(doc => printjson(doc));
+*/
+
+let result13 = db.LocationLV.aggregate(pipeline13);
+print("Véhicule le plus loué : \n");
+result13.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 14) Classement des véhicules par location (décroissant) | Ranking of Vehicles by Rental (descending order) --------------------------*/
 
@@ -306,9 +384,15 @@ let pipeline14 = [
     }
 ];
 
+/*
 let result14 = db.LocationLV.aggregate(pipeline14);
-print("Classement des véhicules par location (décroissant):");
+print("Classement des véhicules par location (décroissant) : \n");
 result14.forEach(doc => printjson(doc));
+*/
+
+let result14 = db.LocationLV.aggregate(pipeline14);
+print("Classement des véhicules par location (décroissant) : \n");
+result14.forEach(doc => {printjson(doc); print();});
 
 /*-------------------------- 15) Classement des véhicules par location (croissant) | Ranking of Vehicles by Rental (ascending order) --------------------------*/
 
@@ -326,11 +410,11 @@ let pipeline15 = [
     }
 ];
 
-let result15 = db.LocationLV.aggregate(pipeline15);
-print("Classement des véhicules par location (croissant):");
+/*let result15 = db.LocationLV.aggregate(pipeline15);
+print("Classement des véhicules par location (croissant) : \n");
 result15.forEach(doc => printjson(doc));
+*/
 
-
-
-
-
+let result15 = db.LocationLV.aggregate(pipeline15);
+print("Classement des véhicules par location (croissant) : \n");
+result15.forEach(doc => {printjson(doc); print();});
